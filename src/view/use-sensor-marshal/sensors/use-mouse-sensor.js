@@ -76,8 +76,8 @@ function getCaptureBindings({
         }
 
         const point: Position = {
-          x: clientX,
-          y: clientY,
+          x: window.DRAG_DIR === 'vertical' ? 0 : clientX,
+          y: window.DRAG_DIR === 'horizontal' ? 0 : clientY,
         };
 
         const phase: Phase = getPhase();

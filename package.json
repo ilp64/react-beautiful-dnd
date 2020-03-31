@@ -1,6 +1,6 @@
 {
-  "name": "react-beautiful-dnd",
-  "version": "13.0.0",
+  "name": "@ilp64/react-beautiful-dnd",
+  "version": "13.0.4",
   "description": "Beautiful and accessible drag and drop for lists with React",
   "author": "Alex Reardon <areardon@atlassian.com>",
   "keywords": [
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/atlassian/react-beautiful-dnd.git"
+    "url": "https://github.com/ilp64/react-beautiful-dnd.git"
   },
   "bugs": {
     "url": "https://github.com/atlassian/react-beautiful-dnd/issues"
@@ -27,7 +27,8 @@
   "sideEffects": false,
   "files": [
     "/dist",
-    "/src"
+    "/src",
+    "/index.d.ts"
   ],
   "config": {
     "prettier_target": "*.{js,jsx,md,json} src/**/*.{js,jsx,md,json} test/**/*.{js,jsx,md,json} docs/**/*.{js,jsx,md,json} stories/**/*.{js,jsx,md,json} cypress/**/*.{js,jsx,md,json}"

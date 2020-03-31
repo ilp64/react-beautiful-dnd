@@ -53,8 +53,12 @@ export const transitions = {
   placeholder: `height ${outOfTheWayTiming}, width ${outOfTheWayTiming}, margin ${outOfTheWayTiming}`,
 };
 
-const moveTo = (offset: Position): ?string =>
-  isEqual(offset, origin) ? null : `translate(${offset.x}px, ${offset.y}px)`;
+const moveTo = (offset: Position): ?string => {
+  const { scale } = window.panzoom.getTransform();
+  const x = offset.x / scale;
+  const y = offset.y / scale;
+  return isEqual(offset, origin) ? null : `translate(${x}px, ${y}px)`;
+};
 
 export const transforms = {
   moveTo,

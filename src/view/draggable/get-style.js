@@ -64,12 +64,19 @@ function getDraggingStyle(dragging: DraggingMapProps): DraggingStyle {
     ? transforms.drop(offset, isCombining)
     : transforms.moveTo(offset);
 
+  const scale = window.panzoom.getTransform().scale;
+  const { top: outerBoxTop, left: outerBoxLeft } = document
+    .querySelector('.editor-instance')
+    .getBoundingClientRect();
+  const top = Math.ceil((box.marginBox.top - outerBoxTop) / scale);
+  const left = Math.ceil((box.marginBox.left - outerBoxLeft) / scale);
+
   const style: DraggingStyle = {
     // ## Placement
     position: 'fixed',
     // As we are applying the margins we need to align to the start of the marginBox
-    top: box.marginBox.top,
-    left: box.marginBox.left,
+    top,
+    left,
 
     // ## Sizing
     // Locking these down as pulling the node out of the DOM could cause it to change size
