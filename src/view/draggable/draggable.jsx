@@ -199,7 +199,15 @@ export default class Draggable extends Component<Props, State> {
     (dimension: DraggableDimension,
       isDropAnimating: boolean,
       movementStyle: MovementStyle): DraggingStyle => {
-      const { width, height, top, left } = dimension.client.paddingBox;
+      // const { width, height, top, left } = dimension.client.paddingBox;
+      const { width, height } = dimension.client.paddingBox;
+      let { top, left } = dimension.client.paddingBox;
+      const scale = window.panzoom.getTransform().scale;
+      const { top: outerBoxTop, left: outerBoxLeft } = document
+          .querySelector('.editor-instance')
+          .getBoundingClientRect();
+      top = Math.ceil((top - outerBoxTop) / scale);
+      left = Math.ceil((left - outerBoxLeft) / scale);
       // For an explanation of properties see `draggable-types`.
       const style: DraggingStyle = {
         position: 'fixed',

@@ -28,12 +28,14 @@ const getStyle = (isNotMoving: boolean, x: number, y: number): Style => {
   }
 
   const point: Position = { x, y };
+  const { scale } = window.panzoom.getTransform();
+  point.y /= scale;
   // not applying any transforms when not moving
   if (isAtOrigin(point)) {
     return noMovement;
   }
   const style: Style = {
-    transform: `translate(${point.x}px, ${point.y}px)`,
+    transform: `translate(${0}px, ${point.y}px)`,
   };
   return style;
 };
